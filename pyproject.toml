@@ -1,0 +1,28 @@
+[project]
+name = "taskly_todo"
+version = "1.0.0"
+description = "A CLI application to manage tasks."
+authors = [{ name = "Vandana", email = "vandana.racherla@gmail.com" }]
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = ["tabulate>=0.10.0"]
+
+[project.urls]
+Homepage = "https://github.com/vandanarach/taskcli"
+
+[project.scripts]
+taskly_todo = "taskly_todo:main"
+
+[tool.uv]
+package = true
+
+[tool.setuptools]
+py-modules = ["taskly_todo"]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[dependency-groups]
+dev = [
+]

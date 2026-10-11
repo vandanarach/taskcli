@@ -2,6 +2,109 @@
 
 Task tracker is a project used to track and manage your tasks. In this task, you will build a simple command line interface (CLI) to track what you need to do, what you have done, and what you are currently working on. This project will help you practice your programming skills, including working with the filesystem, handling user inputs, and building a simple CLI application.
 
+# Usage:
+## Add an entry:
+====================
+taskcli>taskly_todo -a -d "tame the lion"
+
++-----------+---------------+----------+---------------------+---------------------+
+|   Task ID | Description   | Status   | Created Date        | Updated Date        |
++===========+===============+==========+=====================+=====================+
+|         1 | tame the lion | todo     | 2026-10-11T19:07:16 | 2026-10-11T19:07:16 |
++-----------+---------------+----------+---------------------+---------------------+
+
+## Delete an entry:
+======================
+taskcli>taskly_todo -r -d "goto the doc" -i 4
++-----------+------------------+----------+---------------------+---------------------+
+|   Task ID | Description      | Status   | Created Date        | Updated Date        |
++===========+==================+==========+=====================+=====================+
+|         1 | tame the lion    | todo     | 2026-10-11T19:07:16 | 2026-10-11T19:07:16 |
++-----------+------------------+----------+---------------------+---------------------+
+|         2 | pat the dog      | todo     | 2026-10-11T19:07:23 | 2026-10-11T19:07:23 |
++-----------+------------------+----------+---------------------+---------------------+
+|         3 | visit grandma    | todo     | 2026-10-11T19:07:35 | 2026-10-11T19:07:35 |
++-----------+------------------+----------+---------------------+---------------------+
+|         5 | goto the dentist | todo     | 2026-10-11T19:08:04 | 2026-10-11T19:08:04 |
++-----------+------------------+----------+---------------------+---------------------+
+
+## Update an entry:
+=======================
+taskcli>taskly_todo -u -d "goto the doc" -i 3
+
++-----------+------------------+----------+---------------------+---------------------+
+|   Task ID | Description      | Status   | Created Date        | Updated Date        |
++===========+==================+==========+=====================+=====================+
+|         1 | tame the lion    | todo     | 2026-10-11T19:07:16 | 2026-10-11T19:07:16 |
++-----------+------------------+----------+---------------------+---------------------+
+|         2 | pat the dog      | todo     | 2026-10-11T19:07:23 | 2026-10-11T19:07:23 |
++-----------+------------------+----------+---------------------+---------------------+
+|         3 | goto the doc     | todo     | 2026-10-11T19:07:35 | 2026-10-11T19:12:50 |
++-----------+------------------+----------+---------------------+---------------------+
+|         5 | goto the dentist | todo     | 2026-10-11T19:08:04 | 2026-10-11T19:08:04 |
++-----------+------------------+----------+---------------------+---------------------+
+
+taskcli>taskly_todo -u -s "in-progress" -i 3
+
++-----------+------------------+-------------+---------------------+---------------------+
+|   Task ID | Description      | Status      | Created Date        | Updated Date        |
++===========+==================+=============+=====================+=====================+
+|         1 | tame the lion    | todo        | 2026-10-11T19:07:16 | 2026-10-11T19:07:16 |
++-----------+------------------+-------------+---------------------+---------------------+
+|         2 | pat the dog      | todo        | 2026-10-11T19:07:23 | 2026-10-11T19:07:23 |
++-----------+------------------+-------------+---------------------+---------------------+
+|         3 | goto the doc     | in-progress | 2026-10-11T19:07:35 | 2026-10-11T19:13:07 |
++-----------+------------------+-------------+---------------------+---------------------+
+|         5 | goto the dentist | todo        | 2026-10-11T19:08:04 | 2026-10-11T19:08:04 |
++-----------+------------------+-------------+---------------------+---------------------+
+
+
+## List all tasks:
+============================
+taskcli>taskly_todo -l
++-----------+------------------+-------------+---------------------+---------------------+
+|   Task ID | Description      | Status      | Created Date        | Updated Date        |
++===========+==================+=============+=====================+=====================+
+|         1 | tame the lion    | todo        | 2026-10-11T19:07:16 | 2026-10-11T19:07:16 |
++-----------+------------------+-------------+---------------------+---------------------+
+|         2 | pat the dog      | todo        | 2026-10-11T19:07:23 | 2026-10-11T19:07:23 |
++-----------+------------------+-------------+---------------------+---------------------+
+|         3 | goto the doc     | in-progress | 2026-10-11T19:07:35 | 2026-10-11T19:13:07 |
++-----------+------------------+-------------+---------------------+---------------------+
+|         5 | goto the dentist | todo        | 2026-10-11T19:08:04 | 2026-10-11T19:08:04 |
++-----------+------------------+-------------+---------------------+---------------------+
+
+## List tasks after a particular date and time:
+===================================================
+taskcli>taskly_todo -t 2026-10-11T19:07:23
++-----------+------------------+-------------+---------------------+---------------------+
+|   Task ID | Description      | Status      | Created Date        | Updated Date        |
++===========+==================+=============+=====================+=====================+
+|         3 | goto the doc     | in-progress | 2026-10-11T19:07:35 | 2026-10-11T19:13:07 |
++-----------+------------------+-------------+---------------------+---------------------+
+|         5 | goto the dentist | todo        | 2026-10-11T19:08:04 | 2026-10-11T19:08:04 |
++-----------+------------------+-------------+---------------------+---------------------+
+
+## List tasks status wise:
+===============================
+taskcli>taskly_todo -s in-progress
++-----------+---------------+-------------+---------------------+---------------------+
+|   Task ID | Description   | Status      | Created Date        | Updated Date        |
++===========+===============+=============+=====================+=====================+
+|         3 | goto the doc  | in-progress | 2026-10-11T19:07:35 | 2026-10-11T19:13:07 |
++-----------+---------------+-------------+---------------------+---------------------+
+
+taskcli>taskly_todo -s todo
++-----------+------------------+----------+---------------------+---------------------+
+|   Task ID | Description      | Status   | Created Date        | Updated Date        |
++===========+==================+==========+=====================+=====================+
+|         1 | tame the lion    | todo     | 2026-10-11T19:07:16 | 2026-10-11T19:07:16 |
++-----------+------------------+----------+---------------------+---------------------+
+|         2 | pat the dog      | todo     | 2026-10-11T19:07:23 | 2026-10-11T19:07:23 |
++-----------+------------------+----------+---------------------+---------------------+
+|         5 | goto the dentist | todo     | 2026-10-11T19:08:04 | 2026-10-11T19:08:04 |
++-----------+------------------+----------+---------------------+---------------------+
+
 **Requirements:**
 ===================
 The application should run from the command line, accept user actions and inputs as arguments, and store the tasks in a JSON file. The user should be able to:
@@ -42,37 +145,3 @@ Each task should have the following properties:
 
 Make sure to add these properties to the JSON file when adding a new task and update them when updating a task.
 
-**Getting Started**
-===========================
-Here are a few steps to help you get started with the Task Tracker CLI project:
-
-*** Set Up Your Development Environment ***
-Choose a programming language you are comfortable with (e.g., Python, JavaScript, etc.).
-
-Ensure you have a code editor or IDE installed (e.g., VSCode, PyCharm).
-
-*** Project Initialization ***
-Create a new project directory for your Task Tracker CLI.
-
-Initialize a version control system (e.g., Git) to manage your project.
-
-*** Implementing Features ***
-Start by creating a basic CLI structure to handle user inputs.
-
-Implement each feature one by one, ensuring to test thoroughly before moving to the next e.g. implement adding task functionality first, listing next, then updating, marking as in progress, etc.
-
-*** Testing and Debugging ***
-Test each feature individually to ensure they work as expected. Look at the JSON file to verify that the tasks are being stored correctly.
-
-Debug any issues that arise during development.
-
-*** Finalizing the Project ***
-Ensure all features are implemented and tested.
-
-Clean up your code and add comments where necessary.
-
-Write a good readme file on how to use your Task Tracker CLI.
-
-By the end of this project, you will have developed a practical tool that can help you or others manage tasks efficiently. This project lays a solid foundation for more advanced programming projects and real-world applications.
-
-Happy coding!

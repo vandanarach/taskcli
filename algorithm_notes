@@ -1,0 +1,17 @@
+Description
+status = (todo, completed, inprogress)
+created at = timestamp
+updated at = timestamp
+task id = ID
+
+1. Add a task  >> add argument and the task: args are add, description
+2. Delete a task >> task id and the task Description: args are del, taskid, description
+3. Update a task >> task id, task description, status: args are update, taskid, description or status
+4. list the tasks >> all tasks, task by greater than or less than date, task by status
+
+
+take user input based on 1-4 points above
+create a json file with default location as CWD
+update json file based on unser input on 1-4 points above
+
+
