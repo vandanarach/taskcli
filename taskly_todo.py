@@ -38,7 +38,6 @@ def add_task():
     except Exception as d:
         with open(file, "r") as f:
             data = json.load(f)
-        print(d)
     f.close()
     if data != {}:
         sorted_keys = sorted(data.keys())
@@ -59,7 +58,6 @@ def add_task():
     data.update(data_dict)
     with open(file, "w") as f:
         json.dump(data, f, indent=4)  # indent for readability
-    print(f"Dictionary data written to '{file}'.")
     f.close()
     
     table = [[task_id, task["description"], task["status"], task["created_at"], task["updated_at"]] for task_id, task in data_dict.items()]
@@ -113,7 +111,6 @@ def update_task():
                 data[task_id]["updated_at"] = datetime.today().isoformat(timespec="seconds")
     with open(file, "w") as f:
         json.dump(data, f, indent=4)  # indent for readability
-    print(f"Dictionary data written to '{file}'.")
     f.close()
     table = [[task_id, task["description"], task["status"], task["created_at"], task["updated_at"]] for task_id, task in data.items()]
     print(tabulate(table, headers=["Task ID", "Description", "Status", "Created Date", "Updated Date"], tablefmt="grid"))
